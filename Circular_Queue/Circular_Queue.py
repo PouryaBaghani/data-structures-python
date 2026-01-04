@@ -87,9 +87,9 @@ class Circular_Queue():
         if self.is_empty():
             return
 
-        x = self.dequeue()
+        temp = self.dequeue()
         self.reverse_queue()
-        self.enqueue(x)
+        self.enqueue(temp)
 
     def peek(self):
         if self.is_empty():
