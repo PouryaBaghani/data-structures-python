@@ -12,10 +12,16 @@ class Circular_Queue():
         self.rear = -1
 
     def is_empty(self):
-        pass #by Shalilian
+        if (self.front == -1):
+            return True
+        else:
+            return False
         
     def is_full(self):
-        pass #by Shalilian
+        if ((self.rear + 1) % self.size == self.front):
+            return True
+        else:
+            return False
             
     def display(self):
         """Show queue contents with front/rear markers."""
@@ -78,10 +84,20 @@ class Circular_Queue():
             return removedItem
         
     def reverse_queue(self):
-        pass #by Shalilian
+        if self.is_empty():
+            return
+
+        x = self.dequeue()
+        self.reverse_queue()
+        self.enqueue(x)
 
     def peek(self):
-        pass #by Shalilian
+        if self.is_empty():
+            print("Queue is EMPTY!")
+            q.display()
+        else:
+            print(f"{self.queue[self.front]} is the front value with the index of {self.front}")
+        return
 
 q = Circular_Queue(5)
 q.display()
@@ -97,3 +113,8 @@ q.enqueue(20)
 q.dequeue()
 
 q.dequeue()
+
+q.peek()
+
+q.reverse_queue()
+q.display()
