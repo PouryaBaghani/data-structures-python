@@ -45,8 +45,6 @@ class Linear_Queue():
             print(f"], front={self.front}, rear={self.rear}")
             return
 
-        
-
     def enqueue(self, data):
         """Add an element to the rear of the queue."""
         if self.is_full(): # When queue is full
