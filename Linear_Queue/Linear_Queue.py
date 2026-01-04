@@ -1,32 +1,12 @@
-<<<<<<< HEAD
-"""
-===========================================
-  🚀 »Linear Queue Project - By BASH 🚀
-===========================================
-"""
-class Linear_Queue():
-
-    def __init__(self, size):  
-=======
 class Linear_Queue():
     def __init__(self, size):  
         """Initialize an empty queue with given size."""
->>>>>>> a71429edb743a251abab1f68cb69f9116f739156
         self.size = size  
         self.queue = [None] * size
         self.front = -1
         self.rear = -1
 
     def is_empty(self):
-<<<<<<< HEAD
-        return None  # implemented by Pouria
-        
-    def is_full(self):
-        return None  # implemented by Pouria
-
-    def display(self):
-        return None  # implemented by Pouria
-=======
         """Check if queue has no elements."""
         if (self.front == -1):
             return True
@@ -64,34 +44,10 @@ class Linear_Queue():
     
             print(f"], front={self.front}, rear={self.rear}")
             return
->>>>>>> a71429edb743a251abab1f68cb69f9116f739156
 
         
 
     def enqueue(self, data):
-<<<<<<< HEAD
-        if self.is_full():
-            print("full")
-            self.display()
-        elif (self.front == -1):
-            self.front = 0
-            self.rear = 0
-            self.queue[self.rear] = data
-            print(f"Data {data} added to queue")
-            self.display()
-        else:
-            self.rear += 1
-            self.queue[self.rear] = data
-            print(f"Data {data} added to queue")
-            self.display()
-
-    def dequeue(self):
-        if self.is_empty():
-            print("Queue is EMPTY!")
-            self.display()
-            return
-        elif(self.front == self.rear):
-=======
         """Add an element to the rear of the queue."""
         if self.is_full(): # When queue is full
             print("Queue is FULL!")
@@ -122,20 +78,10 @@ class Linear_Queue():
             return
         
         elif (self.front == self.rear): # When queue has exactly one element
->>>>>>> a71429edb743a251abab1f68cb69f9116f739156
             removedItem = self.queue[self.front]
             self.queue[self.front] = None
             self.front = -1
             self.rear = -1
-<<<<<<< HEAD
-            print(f"Data {removedItem} was deleted from queue")
-            self.display()
-            return removedItem
-        else:
-            removedItem = self.queue[self.front]
-            self.queue[self.front] = None
-            self.front += 1
-=======
 
             print(f"Data {removedItem} was deleted from queue")
             self.display()
@@ -146,32 +92,11 @@ class Linear_Queue():
             self.queue[self.front] = None
             self.front += 1
 
->>>>>>> a71429edb743a251abab1f68cb69f9116f739156
             print(f"Data {removedItem} was deleted from queue")
             self.display()
             return removedItem
 
     def peek(self):
-<<<<<<< HEAD
-        return None  # implemented by Pouria
-
-    
-    def reverse_queue(self):
-        return None  # implemented by Pouria
-    
-
-
-q = Linear_Queue(3)
-q.enqueue(2)
-q.enqueue(6)
-q.enqueue(10)
-
-
-print(q.peek())
-w=q.reverse_queue()
-q.display()
-w.display()
-=======
         """Return front element without removing it."""
         if self.is_empty():
             print("Queue is EMPTY!")
@@ -210,4 +135,3 @@ obj.dequeue()
 obj.dequeue()
 obj.dequeue()
 reversed = obj.reverse_queue()
->>>>>>> a71429edb743a251abab1f68cb69f9116f739156
