@@ -17,6 +17,7 @@ class Circular_Queue():
         else:
             return False
         
+        
     def is_full(self):
         if ((self.rear + 1) % self.size == self.front):
             return True
@@ -86,8 +87,8 @@ class Circular_Queue():
     def reverse_queue(self):
         if self.is_empty():
             return
-
-        temp = self.dequeue()
+        
+        temp=self.dequeue()
         self.reverse_queue()
         self.enqueue(temp)
 
@@ -96,8 +97,9 @@ class Circular_Queue():
             print("Queue is EMPTY!")
             q.display()
         else:
-            print(f"{self.queue[self.front]} is the front value with the index of {self.front}")
-        return
+            print(f"{self.queue[self.front]} is the front value with the index {self.front}")
+        return self.front
+    
 
 q = Circular_Queue(5)
 q.display()
@@ -113,8 +115,8 @@ q.enqueue(20)
 q.dequeue()
 
 q.dequeue()
-
+q.peek()
+q.reverse_queue()
 q.peek()
 
-q.reverse_queue()
-q.display()
+
