@@ -7,14 +7,14 @@ This project demonstrates both the **classic traversal logic** for computing siz
 
 ##  Features
 
-- 🔹 Insert at **beginning**, **end**, or at a specific **index**
-- 🔹 Remove from **beginning**, **end**, or at a specific **index**
-- 🔹 Update node data by index
-- 🔹 Find a node by value
-- 🔹 Invert (reverse) the linked list
-- 🔹 Concatenate two linked lists
-- 🔹 Display the list contents
-- 🔹 Track size efficiently with `self.size`
+-  Insert at **beginning**, **end**, or at a specific **index**
+-  Remove from **beginning**, **end**, or at a specific **index**
+-  Update node data by index
+-  Find a node by value
+-  Invert (reverse) the linked list
+-  Concatenate two linked lists
+-  Display the list contents
+-  Track size efficiently with `self.size`
 
 ---
 
@@ -62,4 +62,3 @@ This implementation shows two approaches to determine the size of the linked lis
 ##  Acknowledgments
 
 Special thanks to my dear friend [TAYMAZ328](https://github.com/TAYMAZ328), who helped me with the `self.size` idea and supported the whole project.  
-Gratitude also goes to my partner Shalilian, who contributed and supported the project throughout.
