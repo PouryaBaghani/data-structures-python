@@ -10,8 +10,10 @@ class Stack:
         self.size = size
 
     def push(self, data):
-        pass #by Baghani
-        
+        self.top += 1
+        self.stack[self.top] = data
+        print(f"Data {data} added to stack")
+        return 
 
     def pop(self):
         if self.top == -1:
@@ -23,9 +25,14 @@ class Stack:
         return data
 
     def is_empty(self):
-        return self.top == -1
-
-
+        if (self.top == -1):
+            return True
+        return False
+    
+    def is_full(self):
+        if (self.top == self.size - 1):
+            return True
+        return False
 class Queue_With_Stack:
     def __init__(self, size):
         self.stack1 = Stack(size)   # for enqueue
@@ -33,12 +40,17 @@ class Queue_With_Stack:
         self.size = size
 
     def enqueue(self, data):
-        pass #by Baghani
+        if self.stack1.is_full():
+            print("Queue Overflow! Cannot add more data.") 
+            return
+        
+        self.stack1.push(data)
+        self.display()
+        return
 
     def dequeue(self):
-        
         if self.stack2.is_empty():
-            while not self.stack1.is_empty():
+            while self.stack1.is_full():
                 self.stack2.push(self.stack1.pop())
 
         if self.stack2.is_empty():
@@ -66,7 +78,6 @@ class Queue_With_Stack:
 
         print()
 
-
 qs= Queue_With_Stack(5)
 
 qs.enqueue(6)
@@ -78,11 +89,4 @@ qs.enqueue(78)
 
 qs.dequeue()
 qs.dequeue()
-qs.enqueue(78)
-        
-                
-        
-        
-    
-    
-    
+qs.enqueue(78)   

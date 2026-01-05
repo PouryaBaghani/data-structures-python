@@ -36,15 +36,13 @@ class Stack():
         """Return True if the stack has no elements."""
         if (self.top == -1):
             return True
-        else:
-            return False
+        return False
         
     def is_full(self):
         """Return True if the stack is at maximum capacity."""
         if (self.top == self.size - 1):
             return True
-        else:
-            return False
+        return False
 
     def push(self, data):
        pass # by Shalilian
@@ -63,4 +61,3 @@ class Stack():
      
     def peek(self):
         pass # by Shalilian
-        
