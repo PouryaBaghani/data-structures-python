@@ -45,19 +45,42 @@ class Stack():
         return False
 
     def push(self, data):
-       pass # by Shalilian
+        if self.top==self.size-1:
+            raise IndexError("index out of range")
+        
+        self.top += 1
+        self.stack[self.top] = data
+        print(f"Data {data} added to stack")
+        self.display()
+        return
 
     def pop(self):
         """Remove and return the top element of the stack."""
         if self.is_empty():
-            print("Stack Underflow")
+            print("Stack Underflow, Nothing to pop!")
             return
         
         removedItem = self.stack[self.top]
         self.stack[self.top] = None
         self.top -= 1
         print(f"Data {removedItem} deleted from stack")
+        self.display()
         return removedItem
      
     def peek(self):
-        pass # by Shalilian
+        print(f"data {self.stack[self.top]} is the top value.")
+        return self.stack[self.top]
+    
+#TEST
+stack=Stack(4)
+stack.push(4)
+stack.pop()
+stack.pop()
+stack.push(2)
+stack.push(8)
+stack.push(13)
+stack.push(9)
+#stack.push(25) ---> ERROR!! index out of range
+stack.peek()
+stack.pop()
+stack.peek()
