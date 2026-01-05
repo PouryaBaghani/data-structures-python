@@ -61,4 +61,4 @@ This implementation shows two approaches to determine the size of the linked lis
 
 ##  Acknowledgments
 
-Special thanks to my dear friend [TAYMAZ328](https://github.com/TAYMAZ328), who helped me with the `self.size` idea and supported the whole project.  
+Special thanks to our dear friend [TAYMAZ328](https://github.com/TAYMAZ328), who helped us with the `self.size` idea and supported the whole project.  
