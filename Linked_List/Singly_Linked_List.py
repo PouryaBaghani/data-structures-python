@@ -209,19 +209,13 @@ class Singly_Linked_List():
         return False
     
 # TEST
-q = Singly_Linked_List()
-w = Singly_Linked_List()
-w.insert_at_begin(4)
-q.concatenate(w)
-q.display()
-w.insert_at_index(7, 0)
-
 list = Singly_Linked_List()
 list2 = Singly_Linked_List()
 list2.insert_at_begin(2)
 list.concatenate(list2)
+list.display()
 
-list.update_node(2,1)
+list.update_node(2,0)
 list.insert_at_begin(16)
 list.insert_at_index(5,0)
 list.insert_at_end(8)
