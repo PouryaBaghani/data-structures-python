@@ -31,22 +31,103 @@ class Singly_Linked_List():
         return 
 
     def insert_at_begin(self, data):
-        pass #by Shalilian
+        new_node=Node(data)
+        new_node.next=self.head
+        self.head=new_node
+        self.size+=1
+        print(f"data {data} sucessfully added to the begining of list.")
+        self.display()
+        
 
     def insert_at_end(self, data):
-        pass #by Shalilian
+        new_node=Node(data)
+        
+        if self.is_empty():
+            self.head=new_node
+            self.size+=1
+            return
+        currentAddress=self.head                  #starts from beggining
+        while currentAddress.next:
+            currentAddress=currentAddress.next    #till there is one left
+        
+        currentAddress.next=new_node              #changing the None address that the last one was pointing to, to the new_node address
+        self.size+=1
+        print(f"data {data} sucessfully added to the end of list.")
+        self.display()
 
     def insert_at_index(self, data, index):
-        pass #by Shalilian
-
+        if (index < 0 or index > self.size):
+            raise IndexError(f"Index {index} is not valid, must be non-negative and less than or equal to list size")
+        
+        if index==0:
+            self.insert_at_begin(data)
+            return
+        
+        new_node=Node(data)
+        currentAddress=self.head
+        for _ in range(index-1):
+            currentAddress=currentAddress.next
+            
+        new_node.next=currentAddress.next
+        currentAddress.next=new_node
+        self.size+=1
+        print(f"data {data} sucessfully added to list at index {index}.")
+        self.display()
+        
     def remove_node_at_begin(self):
-        pass #by Shalilian
-    
+        if self.is_empty():
+            print("List is EMPTY!")
+            return None
+        
+        removedData=self.head.data
+        self.head=self.head.next
+        self.size-=1
+        print(f"data {removedData} sucessfully deleted from the begining of list.")
+        self.display()
+        return removedData
+        
     def remove_node_at_end(self):
-        pass #by Shalilian
+        if self.is_empty():
+            print("List is EMPTY!")
+            return None
+        
+        if self.head.next==None:
+            removedData=self.head.data
+            self.head.next=None
+            self.size-=1
+            print(f"data {removedData} sucessfully deleted from the end of list.")
+            self.display()
+            return removedData
+        
+        currentAddress=self.head
+        while currentAddress.next.next:          #we need to stop where there is one data left to the last one
+            currentAddress=currentAddress.next
+            
+        removedData=currentAddress.next.data
+        currentAddress.next=None
+        self.size-=1
+        print(f"data {removedData} sucessfully deleted from the end of list.")
+        self.display()
+        return removedData
     
     def remove_node_at_index(self, index):
-        pass #by Shalilian
+        if (index < 0 or index >= self.size):
+            raise IndexError(f"Index {index} is not valid, must be non-negative and less than list size")
+        
+        if index==0:                              #we need this condition cause one before 0 is -1 !!
+            self.remove_node_at_begin()
+            return
+        
+        currentAddress=self.head
+        for _ in range(index-1):                  #we need to stop one before the one we want to delete
+            currentAddress=currentAddress.next
+            
+        removedData=currentAddress.next.data
+        currentAddress.next=currentAddress.next.next
+        self.size-=1
+        print(f"data {removedData} sucessfully deleted from index {index} of list .")
+        self.display()
+        return removedData
     
     def update_node (self, newData, index):
         if (index < 0):
@@ -64,6 +145,7 @@ class Singly_Linked_List():
 
         currentAddress.data = newData
         print(f"index {index} updated to {newData}") 
+        self.display()
         return
         
     def size_of_list(self):
@@ -75,7 +157,7 @@ class Singly_Linked_List():
         while(currentAddress != None):
            currentAddress = currentAddress.next
            listSize += 1 
-
+        print(f"list size is now= {listSize}")
         return listSize
 
     def concatenate(self, otherList):
@@ -106,10 +188,12 @@ class Singly_Linked_List():
             currentAddress = nextNode
         
         self.head = prev
+        print("linked list sucessfully inverted!")
+        self.display()
 
     def find(self, target):
         if self.is_empty():
-            return
+            return False
         
         index = 0
         currentAddress = self.head
@@ -123,3 +207,39 @@ class Singly_Linked_List():
 
         print(f"Data {target} wasn't in linked list")
         return False
+    
+# TEST
+q = Singly_Linked_List()
+w = Singly_Linked_List()
+w.insert_at_begin(4)
+q.concatenate(w)
+q.display()
+w.insert_at_index(7, 0)
+
+list = Singly_Linked_List()
+list2 = Singly_Linked_List()
+list2.insert_at_begin(2)
+list.concatenate(list2)
+
+list.update_node(2,1)
+list.insert_at_begin(16)
+list.insert_at_index(5,0)
+list.insert_at_end(8)
+list.insert_at_index(0,2)
+#list.insert_at_index(3,5) ----> INDEXERROR!!
+list.insert_at_index(22,4)
+list.insert_at_begin(32)
+list.size_of_list()
+#list.update_node(42,8) ----> INDEXERROR!!
+list.update_node(42,3)
+list.find(16)
+list.find(8)
+list.find(55)
+list.invert() 
+list.find(16)
+list.find(8)
+list.remove_node_at_begin()
+list.remove_node_at_end()
+list.remove_node_at_index(3)
+list.remove_node_at_index(2)
+list.remove_node_at_index(0)
