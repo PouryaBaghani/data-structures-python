@@ -44,7 +44,8 @@ class Doubly_Linked_list():
             return
         
         newNode.next = self.head
-        self.head.prev = newNode
+        self.head.prev = newNode        # the differece bitween singly & doubly! with this line, 
+                                        # the previous first node will point to the new first node as its previous one.
         self.head = newNode
         print(f"Data {data} inserted")
         self.size += 1
@@ -62,8 +63,8 @@ class Doubly_Linked_list():
             self.size -= 1
             return removedData
         
-        self.head = self.head.next
-        self.head.prev = None
+        self.head = self.head.next              # head points to the second one and makes it the first.
+        self.head.prev = None                   # changing the new first node's prev to None.
         print(f"Data {removedData} removed")
         self.size -= 1
         return removedData
@@ -97,7 +98,7 @@ class Doubly_Linked_list():
             currentAddress = currentAddress.next
             
         removedData = currentAddress.data
-        currentAddress.prev.next = None
+        currentAddress.prev.next = None        # the data before the one that we want to delete, its next changes to None.
         print(f"Data {removedData} removed")
         self.size -= 1
         return removedData
@@ -113,7 +114,7 @@ class Doubly_Linked_list():
             self.insert_at_begin(data)
             return
         
-        if index == self.size:
+        if index == self.size:          
             self.insert_at_end(data)
             return
         
@@ -159,19 +160,90 @@ class Doubly_Linked_list():
         return removedData
     
     def update_node(self, index, newData):
-        pass #by Shalilian
+        if (index < 0):
+            raise IndexError(f"Index {index} is not valid, must be non-negative")
+        
+        if self.is_empty():
+            return
+        
+        if index >= self.size:
+            raise IndexError(f"Index {index} is out of range")
+
+        currentAddress = self.head
+        for _ in range (index):
+            currentAddress = currentAddress.next
+
+        currentAddress.data = newData
+        print(f"index {index} updated to {newData}") 
+        self.display()
+        return
     
     def size_of_list(self):
-        pass #by Shalilian
+        listSize = 0
+        if self.is_empty():
+            return listSize
+
+        currentAddress = self.head
+        while(currentAddress != None):
+           currentAddress = currentAddress.next
+           listSize += 1 
+        print(f"list size is now= {listSize}")
+        return listSize
     
     def concatenate(self, otherList):
-        pass #by Shalilian
-
+        if self.head==None:
+            self.head=otherList.head
+            self.size=otherList.size
+            print("lists concatenated!")
+            return
+        
+        currentAddress=self.head
+        while currentAddress.next:
+            currentAddress=currentAddress.next
+            
+        currentAddress.next=otherList.head
+        if otherList.head:
+            otherList.head.prev=currentAddress
+            
+        self.size += otherList.size
+        print("lists concatenated!")
+        
     def invert(self):
-        pass #by Shalilian
+        currentAddress=self.head
+        temp=None
+        
+        while currentAddress:
+            temp=currentAddress.prev                  # we want to change its prev so we need to save it first.
+            currentAddress.prev=currentAddress.next
+            currentAddress.next=temp
+            currentAddress=currentAddress.prev        # we replace them so for going to the next one we should use .prev instead of .next
+            
+        if temp:
+            self.head = temp.prev
+        print("linked list sucessfully inverted!")
+        self.display()
+        
+           
 
     def find_data(self, target):
-        pass #by Shalilian
+        if self.is_empty():
+            print("List is EMPTY!")
+            return False
+        
+        currentAddress = self.head
+        index = 0
+        while currentAddress:
+            if currentAddress.data == target:
+                print(f"Data {target} found at index {index}.")
+                return index
+            
+            currentAddress = currentAddress.next
+            index += 1
+            
+        print(f"Data {target} wasn't in linked list")
+        return False
+          
+    
 
 def menu():
     list = Doubly_Linked_list()
@@ -187,6 +259,7 @@ def menu():
     print("8. Invert list")
     print("9. Find data")
     print("10. Size of list")
+    print("11. Update node data")
     print("0. Exit")
     
     while True:
@@ -227,6 +300,11 @@ def menu():
 
         elif choice == "10":
             list.size_of_list()
+        
+        elif choice == "11":
+            newData = input("Enter new data: ")
+            index = int(input("Enter index: "))
+            list.update_node(index,newData)
 
         elif choice == "0":
             print("Have a good one...")
