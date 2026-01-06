@@ -1,3 +1,8 @@
+"""
+=============================================
+  🚀 Sparse Matrix project by BASH 🚀
+=============================================
+"""
 n = int(input("enter n for a n*n Matrix\n"))
 matrix = []
 for i in range (n):

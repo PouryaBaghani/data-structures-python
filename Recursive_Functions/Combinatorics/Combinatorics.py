@@ -1,3 +1,8 @@
+"""
+=============================================
+  🚀 combinatorics project by BASH
+=============================================
+"""
 def combinatorics(n , k): # C(n, k) = n! / k! * (n - k)!
     if k < 0 or k > n or n < 0:
        return "invalid input"
